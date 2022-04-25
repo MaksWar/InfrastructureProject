@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameFiles.Scripts.Services;
 using GameFiles.Scripts.Services.PersistentProgress;
 using UnityEngine;
@@ -7,10 +8,18 @@ namespace GameFiles.Scripts.Infrastructure.Factory
 {
 	public interface IGameFactory : IService
 	{
-		GameObject CreateHero(GameObject at);
-		void CreateHUD();
 		List<ISavedProgressReader> ProgressReaders { get; }
+
 		List<ISavedProgress> ProgressWriters { get; }
+
+		GameObject HeroGameObject { get; }
+
+		GameObject CreateHero(GameObject at);
+
+		event Action HeroCreated;
+
+		void CreateHUD();
+
 		void CleanUp();
 	}
 }

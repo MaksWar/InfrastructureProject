@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - InitialPoint
+  - LoadingCurtain
   layers:
   - Default
   - TransparentFX
@@ -26,6 +27,7 @@ TagManager:
   - 
   - 
   - 
+  - Player
   - 
   - 
   - 
@@ -34,7 +36,6 @@ TagManager:
   - 
   - 
   - 
-  - Ground
   - 
   - 
   - 

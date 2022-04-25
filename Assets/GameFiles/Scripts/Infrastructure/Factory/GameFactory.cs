@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameFiles.Scripts.Services.PersistentProgress;
 using GameFiles.Scripts.Services.SaveLoad;
 using Scripts.Infrastructure.AssetManagement;
@@ -10,16 +11,26 @@ namespace GameFiles.Scripts.Infrastructure.Factory
 	{
 		private readonly IAssets _assets;
 
+		public event Action HeroCreated;
+
 		public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
 		public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+
+		public GameObject HeroGameObject { get; set; }
+
 
 		public GameFactory(IAssets assets)
 		{
 			_assets = assets;
 		}
 
-		public GameObject CreateHero(GameObject at) =>
-			InstantiateRegistered(AssetPath.CharacterPath, at.transform.position);
+		public GameObject CreateHero(GameObject at)
+		{
+			HeroGameObject = InstantiateRegistered(AssetPath.CharacterPath, at.transform.position);
+			HeroCreated?.Invoke();
+
+			return HeroGameObject;
+		}
 
 		public void CreateHUD() =>
 			InstantiateRegistered(AssetPath.HUDPath);

@@ -7,5 +7,6 @@ namespace Scripts.Logic
 		Attack,
 		Walking,
 		Died,
+		Victory,
 	}
 }
