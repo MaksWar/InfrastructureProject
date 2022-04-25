@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Scripts.Enemy
@@ -15,7 +14,7 @@ namespace Scripts.Enemy
 
 		private void Update()
 		{
-			if(ShouldMove())
+			if (ShouldMove())
 				animator.Move(agent.velocity.magnitude);
 			else
 				animator.StopMoving();

@@ -1,5 +1,4 @@
-﻿using System;
-using GameFiles.Scripts.Infrastructure.Factory;
+﻿using GameFiles.Scripts.Infrastructure.Factory;
 using GameFiles.Scripts.Services;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,7 +6,7 @@ using UnityEngine.AI;
 namespace Scripts.Enemy
 {
 	[RequireComponent(typeof(NavMeshAgent))]
-	public class AgentMoveToPlayer : MonoBehaviour
+	public class AgentMoveToPlayer : Follow
 	{
 		[SerializeField] private NavMeshAgent agent;
 
