@@ -1,17 +1,26 @@
 ﻿using System;
+using GameFiles.Scripts.Services;
+using Scripts.Services.Input;
 using UnityEngine;
 
 namespace Scripts.CameraLogic
 {
 	public class CameraFollower : MonoBehaviour
 	{
-		[Header("Обьект следования")]
-		[SerializeField] private Transform followPoint;
+		[Header("Обьект следования")] [SerializeField]
+		private Transform followPoint;
 
 		[Header("Параметры")]
 		[SerializeField] private float rotationAngleX;
 		[SerializeField] private int distance;
 		[SerializeField] private float offsetY;
+
+		private IInputService _inputService;
+
+		private void Awake()
+		{
+			_inputService = AllServices.Container.Single<IInputService>();
+		}
 
 		private void LateUpdate()
 		{
